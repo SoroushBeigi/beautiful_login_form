@@ -80,35 +80,42 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   sigmaX: 5,
                   sigmaY: 5,
                 ),
-                child: Card(
-                    color: Colors.black.withOpacity(0.3),
-                    child: Padding(
-                      padding: EdgeInsets.all(6.h),
-                      child: Form(
-                          key: _formKey,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              TextFormField(
-                                decoration: inputDecoration.copyWith(hintText: 'Enter your email address'),
-                                style: textStyle,
-                              ),
-                              SizedBox(
-                                height: 3.h,
-                              ),
-                              TextFormField(
-                                decoration: inputDecoration.copyWith(hintText: 'Enter your password'),
-                                style: textStyle,
-                              ),
-                              SizedBox(height: 4.h),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Login'),
-                              ).animate().fadeIn(delay: 2.seconds,duration: 1.seconds,curve: Curves.easeIn)
-                            ],
-                          )),
-                    ),).animate().slideX(duration: 2.seconds,curve: Curves.ease),
+                child: Container(
+   margin: EdgeInsets.symmetric(horizontal:4.w),
+                  child: Card(
+                      color: Colors.black.withOpacity(0.3),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical:6.h,horizontal:5.w),
+                        child: Form(
+                            key: _formKey,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextFormField(
+                                  decoration: inputDecoration.copyWith(hintText: 'Enter your email address'),
+                                  style: textStyle,
+                                ),
+                                SizedBox(
+                                  height: 3.h,
+                                ),
+                                TextFormField(
+                                  decoration: inputDecoration.copyWith(hintText: 'Enter your password'),
+                                  style: textStyle,
+                                ),
+                                SizedBox(height: 4.h),
+                                SizedBox(
+                                  width: 40.w,
+                                    height:7.5.h,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: const Text('Login'),
+                                  ).animate().fadeIn(delay: 2.seconds,duration: 1.seconds,curve: Curves.easeIn),
+                                )
+                              ],
+                            )),
+                      ),).animate().slideX(duration: 2.seconds,curve: Curves.ease),
+                ),
               ),
             ),
           ],
