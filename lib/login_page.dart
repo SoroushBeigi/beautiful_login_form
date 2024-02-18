@@ -33,6 +33,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final inputDecoration = InputDecoration(
+      hintStyle: const TextStyle(color: Colors.grey,),
       border: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.grey[200]!),
         borderRadius: BorderRadius.circular(10.0),
@@ -73,35 +74,42 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   }),
             ),
             Center(
-              child: Card(
-                  color: Colors.black.withOpacity(0.3),
-                  child: Padding(
-                    padding: EdgeInsets.all(6.h),
-                    child: Form(
-                        key: _formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextFormField(
-                              decoration: inputDecoration,
-                              style: textStyle,
-                            ),
-                            SizedBox(
-                              height: 3.h,
-                            ),
-                            TextFormField(
-                              decoration: inputDecoration,
-                              style: textStyle,
-                            ),
-                            SizedBox(height: 4.h),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: const Text('Login'),
-                            )
-                          ],
-                        )),
-                  ),).animate().slideX(duration: 2.seconds,curve: Curves.ease),
+              //TODO: decide to use or not to use blur
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 5,
+                  sigmaY: 5,
+                ),
+                child: Card(
+                    color: Colors.black.withOpacity(0.3),
+                    child: Padding(
+                      padding: EdgeInsets.all(6.h),
+                      child: Form(
+                          key: _formKey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              TextFormField(
+                                decoration: inputDecoration.copyWith(hintText: 'Enter your email address'),
+                                style: textStyle,
+                              ),
+                              SizedBox(
+                                height: 3.h,
+                              ),
+                              TextFormField(
+                                decoration: inputDecoration.copyWith(hintText: 'Enter your password'),
+                                style: textStyle,
+                              ),
+                              SizedBox(height: 4.h),
+                              ElevatedButton(
+                                onPressed: () {},
+                                child: const Text('Login'),
+                              ).animate().fadeIn(delay: 2.seconds,duration: 1.seconds,curve: Curves.easeIn)
+                            ],
+                          )),
+                    ),).animate().slideX(duration: 2.seconds,curve: Curves.ease),
+              ),
             ),
           ],
         ),
