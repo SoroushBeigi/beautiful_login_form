@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:beautiful_login_form/bg_painter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_shaders/flutter_shaders.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,24 +25,26 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   int _startTime = 0;
-  double get _elapsedTimeInSeconds => (_startTime - DateTime.now().millisecondsSinceEpoch) / 1000;
+
+  double get _elapsedTimeInSeconds =>
+      (_startTime - DateTime.now().millisecondsSinceEpoch) / 1000;
+
   @override
   Widget build(BuildContext context) {
-    // final inputDecoration = InputDecoration(
-    //   fillColor: Colors.grey[600],
-    //   filled: true,
-    //   border: OutlineInputBorder(
-    //     borderSide: BorderSide.none,
-    //     borderRadius: BorderRadius.circular(10.0),
-    //   ),
-    // );
+    final inputDecoration = InputDecoration(
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey[200]!),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    );
+    const textStyle = TextStyle(color: Colors.white,letterSpacing: 2);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+        child: Stack(
+          children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
@@ -58,8 +58,10 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           animation: _controller,
                           builder: (context, _) {
                             shader.setFloat(0, _elapsedTimeInSeconds);
-                            shader.setFloat(1, MediaQuery.of(context).size.width);
-                            shader.setFloat(2, MediaQuery.of(context).size.height);
+                            shader.setFloat(
+                                1, MediaQuery.of(context).size.width);
+                            shader.setFloat(
+                                2, MediaQuery.of(context).size.height);
                             return CustomPaint(
                               painter: BackgroundPainter(shader),
                             );
@@ -68,7 +70,38 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       return const CircularProgressIndicator();
                     }
                   }),
-            )
+            ),
+            Center(
+              child: Card(
+                  color: Colors.black.withOpacity(0.3),
+                  child: Padding(
+                    padding: EdgeInsets.all(6.h),
+                    child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextFormField(
+                              decoration: inputDecoration,
+                              style: textStyle,
+                            ),
+                            SizedBox(
+                              height: 3.h,
+                            ),
+                            TextFormField(
+                              decoration: inputDecoration,
+                              style: textStyle,
+                            ),
+                            SizedBox(height: 4.h),
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: const Text('Login'),
+                            )
+                          ],
+                        )),
+                  )),
+            ),
           ],
         ),
       ),
