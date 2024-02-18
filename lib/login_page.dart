@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:beautiful_login_form/bg_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginPage extends StatefulWidget {
@@ -100,7 +101,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             )
                           ],
                         )),
-                  )),
+                  ),).animate().slideX(duration: 2.seconds,curve: Curves.ease),
             ),
           ],
         ),
