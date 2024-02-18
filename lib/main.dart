@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:beautiful_login_form/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -25,3 +27,5 @@ class App extends StatelessWidget {
     );
   }
 }
+
+
