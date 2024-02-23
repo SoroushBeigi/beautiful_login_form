@@ -95,6 +95,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 TextFormField(
                                   decoration: inputDecoration.copyWith(hintText: 'Enter your email address'),
                                   style: textStyle,
+                                  keyboardType: TextInputType.emailAddress,
                                 ),
                                 SizedBox(
                                   height: 3.h,
@@ -102,6 +103,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 TextFormField(
                                   decoration: inputDecoration.copyWith(hintText: 'Enter your password'),
                                   style: textStyle,
+                                  keyboardType:TextInputType.visiblePassword,
+                                  obscureText: true,
                                 ),
                                 SizedBox(height: 4.h),
                                 SizedBox(
