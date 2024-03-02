@@ -1,6 +1,4 @@
-import 'dart:ui';
-
-import 'package:beautiful_login_form/login_page.dart';
+import 'package:beautiful_login_form/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -17,15 +15,13 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      routerConfig: router,
     );
   }
 }
-
-

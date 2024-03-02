@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:beautiful_login_form/bg_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginPage extends StatefulWidget {
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 height: 7.5.h,
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push();
+                                    context.go('/home');
                                   },
                                   child: const Text('Login'),
                                 ).animate().fadeIn(
